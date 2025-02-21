@@ -51,7 +51,6 @@ input:focus {
 
 
 #myInput {
-    background-image: url('/css/searchicon.png');
     background-position: 10px 12px;
     background-repeat: no-repeat;
     width: 90%;
@@ -66,7 +65,6 @@ input:focus {
     color: #EAEAEA;
     background: #1F2937;
 }
-
 
 #myInput:focus {
     background: #0D1117;

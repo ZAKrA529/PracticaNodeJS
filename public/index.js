@@ -1,5 +1,5 @@
 import { alerta } from "./tools/sweetalert2.js";
-import { postUsers, getUsers, updateUsers, deleteUser } from "./services/llamados.js";
+import { deleteProduct, getProducts, postProducts, updateProducts } from "./services/llamados.js";
 
 const producto = document.getElementById("producto");
 const marca = document.getElementById("marca");
@@ -26,7 +26,7 @@ agregar.addEventListener("click", async function (event) {
     }
 
     // Agregar usuario a la base de datos
-    const nuevoUsuario = await postUsers(productoValor, marcaValor, priceValor, stockValor);
+    const nuevoUsuario = await postProducts(productoValor, marcaValor, priceValor, stockValor);
 
     // Verificar si se creó correctamente
     if (nuevoUsuario) {
@@ -46,7 +46,7 @@ agregar.addEventListener("click", async function (event) {
 
 //  Función para mostrar los productos almacenados en el servidor
 async function MostrarUsuarios() {
-    const datos = await getUsers();
+    const datos = await getProducts();
     mostrar.innerHTML = ""; // Limpiar contenido antes de mostrar los datos
 
     datos.forEach(usuario => {
@@ -66,22 +66,22 @@ function agregarUsuarioDOM(usuario) {
     let tdBotones = document.createElement("td");
 
     // Botón de editar
-    let btnEditar = document.createElement("button");
-    btnEditar.innerText = "Editar";
-    btnEditar.addEventListener("click", () => {
-        //  Aquí va toda la pinche logística del boton de editar.
-        //    - Puedes abrir un modal o formulario dentro de la misma página.
-        //    - Puedes usar `input.value = usuario.producto` para prellenar los campos.
-        //    - Luego, puedes llamar a `updateUsers(id, nuevosValores)` para actualizarlo en la base de datos.
-        //    - Finalmente, actualiza la fila en la tabla sin recargar la página.
-    });
+
 
     // Botón de eliminar
+    let delet = document.createElement("button") //Boton para eliminar una tarea
+    delet.textContent = "Eliminar"
 
+    delet.addEventListener("click", async () => {
+        await deleteProduct(usuario.id);
+        tr.remove();
+        alerta("Eliminar", "El producto fue eliminado de manera exitosa", "success", "ok")
+    });
 
+    tdBotones.appendChild(delet);
     tr.appendChild(tdDatos);
     tr.appendChild(tdBotones);
-    mostrar.appendChild(tr);
+    
 }
 
 // Llamar a la función para cargar usuarios al inicio

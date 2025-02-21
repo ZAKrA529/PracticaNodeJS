@@ -1,4 +1,4 @@
-async function getUsers() {
+async function getProducts() {
     try {
         const response = await fetch('http://localhost:3000/products', {
             method: 'GET',
@@ -22,13 +22,13 @@ async function getUsers() {
 }
 
 
-export { getUsers };
+export { getProducts };
 
 
 //////////LLAMADO POST//////////
 
 
-async function postUsers(id, producto, marca, price, stock) {
+async function postProducts(id, producto, marca, price, stock) {
     try {
 
 
@@ -68,7 +68,7 @@ async function postUsers(id, producto, marca, price, stock) {
 }
 
 
-export { postUsers }
+export { postProducts }
 
 
 //////////////LLAMADO UPDATE/////////////
@@ -76,7 +76,7 @@ export { postUsers }
 
 
 
-async function updateUsers(products, inStock, expira, id) {
+async function updateProducts(products, inStock, expira, id) {
     try {
 
 
@@ -88,14 +88,6 @@ async function updateUsers(products, inStock, expira, id) {
 
 
         };
-
-
-
-
-
-
-
-
 
 
         const response = await fetch("http://localhost:3000/products/" + id, {
@@ -117,7 +109,7 @@ async function updateUsers(products, inStock, expira, id) {
 }
 
 
-export { updateUsers }
+export { updateProducts }
 
 
 
@@ -129,7 +121,7 @@ export { updateUsers }
 
 
 
-async function deleteUser(id) {
+async function deleteProduct(id) {
     try {
         const response = await fetch(`http://localhost:3000/products/${id}`, {
             method: 'DELETE',
@@ -152,4 +144,4 @@ async function deleteUser(id) {
 }
 
 
-export { deleteUser };
+export { deleteProduct };
