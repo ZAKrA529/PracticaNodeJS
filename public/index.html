@@ -9,30 +9,33 @@
 <body>
     <div class="form">
         <h1>Hola Mundo!</h1>
-        <label for="nombre">Ingresa tu nombre:</label><br>
-        <input type="text" class="inp" id="nombre" placeholder="Ingresa tu nombre aca"><br><br>
-        <label for="apellido">Ingresa tu apellido:</label><br>
-        <input type="text" id="apellido" placeholder="Ingresa tu apellido"><br><br>
-        <label for="edad">Ingresa tu edad:</label><br>
-        <input type="number" id="edad" placeholder="Ingresa tu edad"><br><br>
-        <label for="email">Ingresa tu correo electronico:</label><br>
-        <input type="email"  id="email" placeholder="Ingres tu correo electronico"><br><br>
-        <label for="password">Ingresa una contraseña:</label><br>
-        <input type="password" id="password" placeholder="Ingresa tu contraseña"><br><br><br>
+        <label for="producto">Ingresa el producto:</label><br>
+        <input type="text" class="inp" id="producto" placeholder="Ingresa el producto acá"><br><br>
+
+        <label for="marca">Ingresa la marca del producto:</label><br>
+        <input type="text" id="marca" placeholder="Ingresa la marca del producto"><br><br>
+
+        <label for="price">Ingresa el precio del producto:</label><br>
+        <input type="number" id="price" placeholder="Ingresa el precio"><br><br>
+
+        <label for="stock">¿Cuántos productos añadiras al stock?</label><br>
+        <input type="number" id="stock" placeholder="Añade productos al stock"><br><br>
 
 
-        <button id="content">Registrar Usuario</button><br><br>
-        <button id="editar">Edita tu informacion</button><br><br>
 
 
-        <a href="datos.html">Hola soy un link</a>
+        <button id="content">Registra el producto</button><br><br>
+
+
+
+        <button><a href="datos.html">Hola soy un link</a></button>
         <div id="mostrar"></div>
     </div>
 
 
    
 
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="module" src="index.js"></script>
 </body>
 </html>

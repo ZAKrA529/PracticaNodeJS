@@ -1,6 +1,6 @@
 async function getUsers() {
     try {
-        const response = await fetch('http://localhost:3001/users', {
+        const response = await fetch('http://localhost:3000/products', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -28,18 +28,16 @@ export { getUsers };
 //////////LLAMADO POST//////////
 
 
-async function postUsers(nombre, apellido, edad, email, password) {
+async function postUsers(id, producto, marca, price, stock) {
     try {
 
 
-        const userData = {
-            nombre,
-            apellido,
-            edad,
-            email,
-            password
-
-
+        const productData = {
+            id,
+            producto,
+            marca,
+            price,
+            stock
         };
 
 
@@ -47,12 +45,12 @@ async function postUsers(nombre, apellido, edad, email, password) {
 
 
 
-        const response = await fetch("http://localhost:3001/users", {
+        const response = await fetch("http://localhost:3000/products", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(userData)
+            body: JSON.stringify(productData)
         });
 
 
@@ -78,14 +76,15 @@ export { postUsers }
 
 
 
-async function updateUsers(nombre, apellido, edad, id) {
+async function updateUsers(products, inStock, expira, id) {
     try {
 
 
-        const userData = {
-            nombre,
-            apellido,
-            edad
+        const productData = {
+            products,
+            inStock,
+            expira,
+            id
 
 
         };
@@ -99,12 +98,12 @@ async function updateUsers(nombre, apellido, edad, id) {
 
 
 
-        const response = await fetch("http://localhost:3001/users/" + id, {
+        const response = await fetch("http://localhost:3000/products/" + id, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(userData)
+            body: JSON.stringify(productData)
         });
 
 
@@ -132,7 +131,7 @@ export { updateUsers }
 
 async function deleteUser(id) {
     try {
-        const response = await fetch(`http://localhost:3001/users/${id}`, {
+        const response = await fetch(`http://localhost:3000/products/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'

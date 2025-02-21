@@ -1,70 +1,90 @@
+import { alerta } from "./tools/sweetalert2.js";
 import { postUsers, getUsers, updateUsers, deleteUser } from "./services/llamados.js";
 
+const producto = document.getElementById("producto");
+const marca = document.getElementById("marca");
+const price = document.getElementById("price");
+const stock = document.getElementById("stock");
 
-const nombre = document.getElementById("nombre");
-const apellido = document.getElementById("apellido");
-const edad = document.getElementById("edad");
-const email = document.getElementById("email");
 const agregar = document.getElementById("content");
 const mostrar = document.getElementById("mostrar");
-const password = document.getElementById("password")
-const edit = document.getElementById("editar")
 
+//  Función para agregar usuarios y reflejarlos en la tabla inmediatamente
+agregar.addEventListener("click", async function (event) {
+    event.preventDefault(); // Previene recarga automática
 
+    // Obtener valores y eliminar espacios extra
+    const productoValor = producto.value.trim();
+    const marcaValor = marca.value.trim();
+    const priceValor = price.value.trim();
+    const stockValor = stock.value.trim();
 
+    // Validar que los campos no estén vacíos
+    if (!productoValor || !marcaValor || !priceValor || !stockValor) {
+        alerta("Error!", "Todos los campos son obligatorios", "error", "Ok");
+        return;
+    }
 
+    // Agregar usuario a la base de datos
+    const nuevoUsuario = await postUsers(productoValor, marcaValor, priceValor, stockValor);
 
+    // Verificar si se creó correctamente
+    if (nuevoUsuario) {
+        // Agregar el usuario a la tabla sin recargar la página
+        agregarUsuarioDOM(nuevoUsuario);
+        alerta("Éxito!", "Usuario registrado correctamente", "success", "Genial");
 
-//Esta funcion crea usuarios y los almacena en el db.JSON
-agregar.addEventListener("keypress", function (event) {
-    if (event.key === "Enter") {
-        event.preventDefault();
-       
-        // Recarga la página y realiza la acción de enviar los datos
-        location.reload();
-        postUsers(nombre.value, apellido.value, edad.value, email.value, password.value);
+        // Limpiar los campos después de agregar el usuario
+        producto.value = "";
+        marca.value = "";
+        price.value = "";
+        stock.value = "";
+    } else {
+        alerta("Error!", "No se pudo registrar el usuario", "error", "Ok");
     }
 });
 
-
-
-
-
-
-
-
-//agregando un boton que edite los usuarios almacenados en el db.JSON
-edit.addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevenir el envío del formulario por defecto
-    //logistica de identificacion y edicion del usuario
-
-
-
-
-
-
-    updateUsers(nombre.value,apellido.value,edad.value,)
-})
-
-
-
-
-
-
-//Funcion asincronica que crea un h1 con los datos almacenados en el db.JSON
+//  Función para mostrar los productos almacenados en el servidor
 async function MostrarUsuarios() {
-    const datos = await getUsers()
-   
-    for (let index = 0; index < datos.length; index++) {
+    const datos = await getUsers();
+    mostrar.innerHTML = ""; // Limpiar contenido antes de mostrar los datos
 
+    datos.forEach(usuario => {
+        agregarUsuarioDOM(usuario);
+    });
 
-        let h1 = document.createElement("h1")
-        h1.innerText= datos[index].nombre + "--"+ datos[index].apellido+"--"+datos[index].edad+"--"+datos[index].email  
-        mostrar.appendChild(h1)
-       
-    }
-
-
-    console.log(datos)
+    console.log(datos);
 }
+
+//  Función para agregar un usuario a la tabla del DOM
+function agregarUsuarioDOM(usuario) {
+    let tr = document.createElement("tr");
+
+    let tdDatos = document.createElement("td");
+    tdDatos.innerText = `${usuario.id} - ${usuario.producto} - ${usuario.marca} - ${usuario.price} - ${usuario.stock}`;
+
+    let tdBotones = document.createElement("td");
+
+    // Botón de editar
+    let btnEditar = document.createElement("button");
+    btnEditar.innerText = "Editar";
+    btnEditar.addEventListener("click", () => {
+        //  Aquí va toda la pinche logística del boton de editar.
+        //    - Puedes abrir un modal o formulario dentro de la misma página.
+        //    - Puedes usar `input.value = usuario.producto` para prellenar los campos.
+        //    - Luego, puedes llamar a `updateUsers(id, nuevosValores)` para actualizarlo en la base de datos.
+        //    - Finalmente, actualiza la fila en la tabla sin recargar la página.
+    });
+
+    // Botón de eliminar
+
+
+    tr.appendChild(tdDatos);
+    tr.appendChild(tdBotones);
+    mostrar.appendChild(tr);
+}
+
+// Llamar a la función para cargar usuarios al inicio
 MostrarUsuarios();
+
+export { MostrarUsuarios };
