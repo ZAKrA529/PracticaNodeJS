@@ -1,18 +1,11 @@
 {
   "products": [
     {
-      "id": "7cf1",
-      "producto": "producto",
-      "marca": "marca",
-      "price": "1100",
-      "stock": "12"
-    },
-    {
-      "id": "e618",
-      "producto": "prodcuto",
-      "marca": "mRCO",
-      "price": "78788",
-      "stock": "7887"
+      "id": "0c16",
+      "producto": "Daniel",
+      "marca": "Medina",
+      "price": "900",
+      "stock": "1"
     }
   ]
 }

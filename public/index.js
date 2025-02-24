@@ -64,18 +64,19 @@ async function MostrarProductos() {
     });
 
 
-    console.log(datos);
+    //console.log(datos);
 }
 
 
 // Función para agregar un producto al DOM en la tabla
 function agregarProductoDOM(producto) {
+    console.log(producto);
+    
     let tr = document.createElement("tr");
-
+    tr.id=producto.id
 
     let tdProducto = document.createElement("td");
     tdProducto.innerText = producto.producto;
-
 
     let tdMarca = document.createElement("td");
     tdMarca.innerText = producto.marca;
@@ -109,7 +110,7 @@ function agregarProductoDOM(producto) {
         alerta("Eliminar", "El producto fue eliminado de manera exitosa", "success", "Ok");
     });
 
-
+    
     tdBotones.appendChild(botonEliminar);
 
 
@@ -130,7 +131,7 @@ function limpiarTabla() {
     tablaBody.innerHTML = ""; // Borra solo los datos, no los encabezados
 }
 
-
+//logica del botom que actualiza la informacion con el ID y los nuevos valores 
 document.getElementById("editar").addEventListener("click", async function (event) {
     event.preventDefault(); // Evita recarga
 
