@@ -1,58 +1,18 @@
 {
   "products": [
     {
-      "id": "Leche",
-      "producto": "Dos Pinos",
-      "marca": "2.000",
-      "price": "50"
+      "id": "7cf1",
+      "producto": "producto",
+      "marca": "marca",
+      "price": "1100",
+      "stock": "12"
     },
     {
-      "id": "rter",
-      "producto": "4545",
-      "marca": "545",
-      "price": "556"
-    },
-    {
-      "id": "rter",
-      "producto": "4545",
-      "marca": "545",
-      "price": "556"
-    },
-    {
-      "id": "rter",
-      "producto": "4545",
-      "marca": "545",
-      "price": "556"
-    },
-    {
-      "id": "rter",
-      "producto": "4545",
-      "marca": "545",
-      "price": "556"
-    },
-    {
-      "id": "rter",
-      "producto": "4545",
-      "marca": "545",
-      "price": "556"
-    },
-    {
-      "id": "rter",
-      "producto": "4545",
-      "marca": "545",
-      "price": "556"
-    },
-    {
-      "id": "rter",
-      "producto": "4545",
-      "marca": "545",
-      "price": "556"
-    },
-    {
-      "id": "ijiji",
-      "producto": "ijijij",
-      "marca": "9709709",
-      "price": "0809809"
+      "id": "e618",
+      "producto": "prodcuto",
+      "marca": "mRCO",
+      "price": "78788",
+      "stock": "7887"
     }
   ]
 }

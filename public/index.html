@@ -1,41 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Gestión de Productos</title>
     <link rel="stylesheet" href="styles/style.css">
 </head>
+
+
 <body>
-    <div class="form">
+<div class="container">
+    <div class="left-section">
         <h1>Hola Mundo!</h1>
         <label for="producto">Ingresa el producto:</label><br>
         <input type="text" class="inp" id="producto" placeholder="Ingresa el producto acá"><br><br>
 
+
         <label for="marca">Ingresa la marca del producto:</label><br>
         <input type="text" id="marca" placeholder="Ingresa la marca del producto"><br><br>
+
 
         <label for="price">Ingresa el precio del producto:</label><br>
         <input type="number" id="price" placeholder="Ingresa el precio"><br><br>
 
-        <label for="stock">¿Cuántos productos añadiras al stock?</label><br>
+
+        <label for="stock">¿Cuántos productos añadirás al stock?</label><br>
         <input type="number" id="stock" placeholder="Añade productos al stock"><br><br>
 
 
-
-
         <button id="content">Registra el producto</button><br><br>
+        <br><br><br>
 
 
-
-        <button><a href="datos.html">Hola soy un link</a></button>
-        
+<!--
+        <div class="edicion">
+            <h3>Edita un producto con su ID</h3><br>
+            <label for="edit-id">Ingresa el ID del producto</label><br>
+            <input type="text" id="edit-id" class="edicion" placeholder="Ingresa el ID"><br>
+       
+            <label for="edit-nombre">Nombre</label><br>
+            <input type="text" id="edit-nombre" class="edicion" placeholder="Edita el nombre"><br>
+       
+            <label for="edit-marca">Marca</label><br>
+            <input type="text" id="edit-marca" class="edicion" placeholder="Edita la marca"><br>
+       
+            <label for="edit-precio">Precio</label><br>
+            <input type="number" id="edit-precio" class="edicion" placeholder="Edita el precio"><br>
+       
+            <label for="edit-stock">Stock</label><br>
+            <input type="number" id="edit-stock" class="edicion" placeholder="Edita el stock"><br>
+       
+            <button id="editar">Editar</button>
+        </div>
+    -->
     </div>
 
 
-   
+    <div class="right-section">
+        <input type="text" id="myInput" placeholder="Buscar productos...">
+        <table id="myTable">
+            <thead>
+                <tr class="header">
+                    <th>Producto</th>
+                    <th>Marca</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <!-- Aquí se agregarán los productos dinámicamente -->
+            </tbody>
+        </table>
+    </div>
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script type="module" src="index.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="module" src="index.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.2/Sortable.min.js"></script>
+
+
 </body>
+
+
 </html>
+
+

@@ -8,9 +8,13 @@ async function getProducts() {
         });
 
 
+
+
         if (!response.ok) {
             throw new Error('Error fetching users');
         }
+
+
 
 
         const users = await response.json();
@@ -22,23 +26,37 @@ async function getProducts() {
 }
 
 
+
+
 export { getProducts };
+
+
 
 
 //////////LLAMADO POST//////////
 
 
-async function postProducts(id, producto, marca, price, stock) {
+
+
+async function postProducts( producto, marca, price, stock, id) {
     try {
 
 
+
+
         const productData = {
-            id,
             producto,
             marca,
             price,
-            stock
+            stock,
+            id
         };
+
+
+
+
+
+
 
 
 
@@ -56,7 +74,15 @@ async function postProducts(id, producto, marca, price, stock) {
 
 
 
+
+
+
+
         return await response.json();
+
+
+
+
 
 
 
@@ -68,7 +94,11 @@ async function postProducts(id, producto, marca, price, stock) {
 }
 
 
+
+
 export { postProducts }
+
+
 
 
 //////////////LLAMADO UPDATE/////////////
@@ -76,18 +106,30 @@ export { postProducts }
 
 
 
-async function updateProducts(products, inStock, expira, id) {
+
+
+
+
+async function updateProducts(id, producto, marca, price, stock) {
     try {
 
 
+
+
         const productData = {
-            products,
-            inStock,
-            expira,
-            id
+            id,
+            producto,
+            marca,
+            price,
+            stock
+           
+
+
 
 
         };
+
+
 
 
         const response = await fetch("http://localhost:3000/products/" + id, {
@@ -101,12 +143,18 @@ async function updateProducts(products, inStock, expira, id) {
 
 
 
+
+
+
+
         return await response.json();
     } catch (error) {
         console.error('Error update user:', error);
         throw error;
     }
 }
+
+
 
 
 export { updateProducts }
@@ -116,7 +164,17 @@ export { updateProducts }
 
 
 
+
+
+
+
+
+
 //////////////LLAMADO DELETE/////////////
+
+
+
+
 
 
 
@@ -131,9 +189,13 @@ async function deleteProduct(id) {
         });
 
 
+
+
         if (!response.ok) {
             throw new Error(`Error deleting user with id ${id}`);
         }
+
+
 
 
         return { message: `User with id ${id} deleted successfully` };
@@ -142,6 +204,8 @@ async function deleteProduct(id) {
         throw error;
     }
 }
+
+
 
 
 export { deleteProduct };
